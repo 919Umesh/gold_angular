@@ -1,0 +1,49 @@
+<div class="profile-container">
+  <h1 class="page-title">User Profile</h1>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading profile...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error-state">
+    <div class="error-icon">⚠️</div>
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Profile Data -->
+  <div *ngIf="profile && !loading && !error" class="profile-card">
+    <div class="profile-header">
+      <div class="avatar">
+        {{ profile.full_name.charAt(0).toUpperCase() }}
+      </div>
+      <div class="profile-title">
+        <h2>{{ profile.full_name }}</h2>
+        <span class="role-badge {{ profile.role }}">{{ profile.role }}</span>
+      </div>
+    </div>
+    
+    <div class="profile-details">
+      <div class="detail-row">
+        <span class="label">Email</span>
+        <span class="value">{{ profile.email }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Phone</span>
+        <span class="value">{{ profile.phone }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">KYC Status</span>
+        <span class="kyc-status {{ profile.kyc_status }}">
+          {{ profile.kyc_status }}
+        </span>
+      </div>
+      <div class="detail-row">
+        <span class="label">Member Since</span>
+        <span class="value">{{ profile.created_at | date:'mediumDate' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

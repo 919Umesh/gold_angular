@@ -1,0 +1,46 @@
+<div class="transaction-container">
+  <h1>Transaction History</h1>
+
+  <!-- Loading State -->
+  <div *ngIf="loading" class="loading">
+    Loading transactions...
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="error">
+    {{ error }}
+  </div>
+
+  <!-- Transactions List -->
+  <div *ngIf="!loading && !error" class="transaction-list">
+    <div *ngFor="let transaction of transactions" 
+         class="transaction-item"
+         [class]="transaction.type">
+      
+      <div class="transaction-info">
+        <span class="transaction-type">
+          {{ getTransactionTypeDisplay(transaction.type) }}
+        </span>
+        <span class="transaction-date">
+          {{ transaction.created_at | date:'medium' }}
+        </span>
+      </div>
+
+      <div class="transaction-details">
+        <span *ngIf="transaction.gold_grams > 0" class="gold-amount">
+          {{ transaction.gold_grams }}g
+        </span>
+        <span class="amount" [class]="transaction.type">
+          {{ formatAmount(transaction) }}
+        </span>
+      </div>
+
+      <div class="transaction-status">
+        <span class="status-badge" [class]="transaction.status">
+          {{ transaction.status }}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>
