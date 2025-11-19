@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../services/api/transaction';
 import { TransactionModel } from '../models/transaction';
 import { API_CONSTANTS } from  '../constants/api';
+import { AuthService } from '../services/api/auth';
 
 @Component({
   selector: 'app-transaction',
@@ -17,14 +18,14 @@ export class Transaction implements OnInit {
   loading : boolean = true;
   error : string = '';
 
-  constructor(private transactionService: TransactionService){}
+  constructor(private transactionService: TransactionService,private authService:AuthService){}
 
    ngOnInit(): void {
     this.fetchTransactions();
   }
 
   fetchTransactions(): void {
-    const token = API_CONSTANTS.TOKEN;
+    const token = this.authService.getToken();
     
     this.transactionService.getTransactions(token).subscribe({
       next: (response) => {

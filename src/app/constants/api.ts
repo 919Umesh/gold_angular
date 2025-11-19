@@ -5,6 +5,6 @@ export const API_CONSTANTS = {
     TRANSACTION: '/transaction',
     PROFILE: '/auth/profile', 
     WALLET: '/wallet',
-    AUTH: '/auth'
+    AUTH: '/auth/login'
   }
 } as const;

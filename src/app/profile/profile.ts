@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ProfileModel } from '../models/profile';
 import { API_CONSTANTS } from  '../constants/api';
 import { ProfileService } from '../services/api/profile';
+import { AuthService } from '../services/api/auth';
 
 @Component({
   selector: 'app-profile',
@@ -17,14 +18,14 @@ export class Profile implements OnInit{
    loading : boolean = true;
    error : string = '';
 
-   constructor(private profileService:ProfileService){}
+   constructor(private profileService:ProfileService,private authService:AuthService ){}
 
    ngOnInit(): void {
      this.fetchProfile();
    }
 
    fetchProfile(): void {
-      const token = API_CONSTANTS.TOKEN;
+      const token = this.authService.getToken();
        
        this.profileService.getProfile(token).subscribe({
          next: (response) => {
@@ -32,7 +33,7 @@ export class Profile implements OnInit{
            this.loading = false;
          },
          error: (error) => {
-           this.error = 'Failed to load transactions';
+           this.error = 'Failed to load profile';
            this.loading = false;
            console.error('Error fetching transactions:', error);
          }

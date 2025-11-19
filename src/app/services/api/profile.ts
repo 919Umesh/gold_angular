@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { API_CONSTANTS } from  '../../constants/api';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProfileResponse } from '../../models/profile';
 
@@ -13,7 +13,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile(token: string): Observable<ProfileResponse> {
+  getProfile(token: string | null): Observable<ProfileResponse> {
+     if (!token) {
+      return throwError(() => new Error('Authentication token is missing'));
+    }
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });

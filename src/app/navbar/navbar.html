@@ -6,6 +6,23 @@
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
     <li><a routerLink="/transactions" routerLinkActive="active">Transactions</a></li>
-    <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    
+    @if (isLoggedIn) {
+      <li>
+        <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      </li>
+    }
+    
+    @if (!isLoggedIn) {
+      <li>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+      </li>
+    }
+
+    @if (isLoggedIn) {
+      <li class="logout-item">
+        <a (click)="logout()" class="logout-link">Logout</a>
+      </li>
+    }
   </ul>
 </nav>
