@@ -16,12 +16,10 @@ export const routes: Routes = [
     component: Profile,
     canActivate: [AuthGuard] 
     },
-   // { path: 'profile', component: Profile },
-   // { path: 'transactions', component: Transaction },
    { 
     path: 'transactions', 
     component: Transaction,
-    canActivate: [AuthGuard]  // Protected route
+    canActivate: [AuthGuard] 
   },
     { path: '**', redirectTo: '' } 
 ];

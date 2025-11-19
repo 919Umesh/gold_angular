@@ -14,6 +14,7 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   getProfile(token: string | null): Observable<ProfileResponse> {
+    
      if (!token) {
       return throwError(() => new Error('Authentication token is missing'));
     }
