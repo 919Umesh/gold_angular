@@ -8,7 +8,7 @@ import { AuthService } from '../services/api/auth';
 @Component({
   selector: 'app-transaction',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './transaction.html',
   styleUrl: './transaction.css',
 })

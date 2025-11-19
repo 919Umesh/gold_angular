@@ -1,15 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { ProfileModel } from '../models/profile';
-import { API_CONSTANTS } from  '../constants/api';
 import { ProfileService } from '../services/api/profile';
 import { AuthService } from '../services/api/auth';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
