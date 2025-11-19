@@ -2,31 +2,24 @@
   <div class="nav-brand">
     <a routerLink="/">Gold Web</a>
   </div>
-  <ul class="nav-links">
+
+  <ul class="nav-links-center">
     <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
     <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-    
     @if (isLoggedIn) {
-     <li>
-      <a routerLink="/transactions" routerLinkActive="active">Transactions</a>
-    </li>
+      <li><a routerLink="/transactions" routerLinkActive="active">Transactions</a></li>
     }
     @if (isLoggedIn) {
-      <li>
-        <a routerLink="/profile" routerLinkActive="active">Profile</a>
-      </li>
+      <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
     }
-    
-    @if (!isLoggedIn) {
-      <li>
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-      </li>
-    }
+  </ul>
 
+  <ul class="nav-links-right">
+    @if (!isLoggedIn) {
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    }
     @if (isLoggedIn) {
-      <li class="logout-item">
-        <a (click)="logout()" class="logout-link">Logout</a>
-      </li>
+      <li><a (click)="logout()" class="logout-link">Logout</a></li>
     }
   </ul>
 </nav>

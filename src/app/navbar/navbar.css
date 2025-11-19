@@ -2,20 +2,40 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1976d2;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 1000px;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  padding: 1rem 3rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #374151;
+  border-radius: 16px;
 }
-
 .nav-brand a {
-  color: white;
+  color: #374151;
   text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
 }
 
-.nav-links {
+/* Center Links */
+.nav-links-center {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Right Links */
+.nav-links-right {
   display: flex;
   list-style: none;
   gap: 2rem;
@@ -23,15 +43,43 @@
   padding: 0;
 }
 
-.nav-links a {
-  color: white;
+
+.nav-links-center a {
+  color: #374151;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  gap: 1rem;
+  font-size: 0.95rem;
+
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links-right a {
+  background-color: #3b82f6; /* Blue background */
+  color: white; 
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.nav-links-right a:hover {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+.nav-links-center a:hover {
+  color: purple;
+}
+
+.nav-links-center a.active,
+.nav-links-right a.active {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logout-link {
+  cursor: pointer;
 }
